@@ -1,34 +1,41 @@
-# Sistem-Alarm-Securitate-cu-RTOS
-Sistem embedded de securitate implementat cu FreeRTOS, featuring detectare intruși, interfață parolă și alarmă sonoră.
-Proiectul este realizat pentru studiul conceptelor de bază a RTOS.
+# Security Alarm System with RTOS
+An embedded security system implemented with FreeRTOS, featuring intruder detection, password interface, and sound alarm. This project is designed for studying basic RTOS concepts.
 
+## Features
+Authentication system with 4-bit password
 
-## Caracteristici
-- **Sistem de autentificare** cu parolă de 4 biți
-- **Detectare intruși** cu senzor ultrasonic HC-SR04
-- **Alarmă sonoră** cu buzzer
-- **Arhitectură real-time** cu FreeRTOS
-- **Management resurse** cu cozi de mesaje
+Intruder detection with HC-SR04 ultrasonic sensor
 
+Sound alarm with buzzer
 
-##  Tehnologii Utilizate
-- **Platformă:** Arduino Uno
-- **RTOS:** FreeRTOS
-- **Limbaj:** C/C++
-- **Senzori:** HC-SR04 (ultrasonic), Joystick (input parolă)
-- **Actuatori:** Buzzer
+Real-time architecture with FreeRTOS
 
-## Explicatii arhitectura task-uri
-- Task1: DistanceDetection - "Paznicul"(verifica când distanța devine mai mică sau egală cu 10-adaugă valori in queue).
-- Task2: Buzz - "Alarma"(citește queue-ul - dacă depistează valori aprinde alarma).
-- Task3: EnterPass - "Interfața Utilizator"(permite introducerea parolei, parola se stochează în alt queue).
-- Task4: CheckPass - "Verificatorul"(verifică corectitudinea parolei, adică citește queue-ul și compară rezultatele, respectiv lasă alarma armată, sau o dezarmează).
+Resource management with message queues
 
+## Technologies Used
+Platform: Arduino Uno
 
-## Observații
-- Parola este deja inclusă în program din cauză că acest program este făcut cu scopul de a experimenta cu RTOS, și nu este un sistem gândit pentru funcționalitate
-- Pentru reactivare a alarmei după dezarmare apasă butonul de reset al plăcii Arduino.
+RTOS: FreeRTOS
 
+Language: C/C++
 
-## Cum arată sistemul
+Sensors: HC-SR04 (ultrasonic), Joystick (password input)
+
+Actuators: Buzzer
+
+## Task Architecture Explanation
+Task1: DistanceDetection - "The Guard" (checks when distance becomes less than or equal to 10cm - adds values to queue)
+
+Task2: Buzz - "The Alarm" (reads the queue - if it detects values, it activates the alarm)
+
+Task3: EnterPass - "User Interface" (allows password input, password is stored in another queue)
+
+Task4: CheckPass - "The Verifier" (checks password correctness by reading the queue and comparing results, keeping the alarm armed or disarming it)
+
+## Notes
+The password is hardcoded in the program since this system is designed for RTOS experimentation rather than production functionality
+
+To reactivate the alarm after disarming, press the Arduino board reset button
+
+## How does the system look like
 ![WhatsApp Image 2025-11-22 at 09 52 06](https://github.com/user-attachments/assets/ca36b57b-5bd9-4136-8f2c-925a3ec5c046)
